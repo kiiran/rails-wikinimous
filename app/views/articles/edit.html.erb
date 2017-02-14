@@ -1,0 +1,7 @@
+<h1>Edit this article</h1>
+<p>Current title: <%= @article.title %></p>
+<p>Current content: <%= @article.content %></p>
+
+<%= render 'form' %>
+
+<%= link_to "Go back to all articles", articles_path %>

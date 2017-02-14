@@ -1,0 +1,29 @@
+<!-- Coding the "Next/Previous article" links -->
+<% if @article.id > 1 %>
+  <% dynamic_prev = article_path(id: (@article.id - 1)) %>
+  <% prev_text = "<<Previous" %>
+<% else %>
+  <% dynamic_prev = articles_path %>
+  <% prev_text = "<<Back to all articles" %>
+<% end %>
+<% if @article_count > @article.id %>
+  <% dynamic_next = article_path(id: (@article.id + 1)) %>
+  <% next_text = "Next>>" %>
+<% else %>
+  <% dynamic_next = articles_path %>
+  <% next_text = "Back to all articles>>" %>
+<% end %>
+
+
+<h1><%= @article.title %></h1>
+<p><%= @article.content %></p>
+
+<div>
+  <p><%= link_to "Go back to all articles", articles_path %></p>
+  <p><%= link_to "Edit this article", edit_article_path(id: @article.id) %></p>
+  <p><%= link_to "Delete this article", article_path, method: :delete %></p>
+</div>
+
+<div>
+  <h4><%= link_to prev_text, dynamic_prev %></h4><h4><%= link_to next_text, dynamic_next %></h4>
+</div>
